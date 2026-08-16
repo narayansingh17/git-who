@@ -1,3 +1,4 @@
+import { Search } from "lucide-react";
 export default function Hero() {
   return (
     <div className="hero-left">
@@ -11,11 +12,14 @@ export default function Hero() {
         Analyze repositories, coding activity, languages, and developer patterns
         from a single GitHub username.
       </p>
-      <input
-        type="text"
-        placeholder="Enter profile name."
-        className="search-bar"
-      ></input>
+      <div className="search-box">
+        <Search className="search-icon" size={20} color="#000000" />
+        <input
+          type="text"
+          placeholder="Enter GitHub username"
+          className="search-bar "
+        ></input>
+      </div>
     </div>
   );
 }

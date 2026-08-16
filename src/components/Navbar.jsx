@@ -12,7 +12,10 @@ function Logo() {
   return (
     <div className="logo-area">
       <img src="src\assets\GitWho-logo.png" className="logo"></img>
-      {/* <img src="\src\assets\GitWho.svg" className="logo-name"></img> */}
+      <img
+        src="src\assets\Gemini_Generated_Image_ldyne7ldyne7ldyn-removebg-preview.png"
+        className="name"
+      ></img>
     </div>
   );
 }
@@ -25,12 +28,5 @@ function RightSec() {
   );
 }
 function Name() {
-  return (
-    <>
-      <img
-        src="src\assets\Gemini_Generated_Image_ldyne7ldyne7ldyn-removebg-preview.png"
-        className="name"
-      ></img>
-    </>
-  );
+  return <></>;
 }
