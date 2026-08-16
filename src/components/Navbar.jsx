@@ -1,6 +1,6 @@
 export default function Navbar() {
   return (
-    <nav>
+    <nav className="main-nav">
       <Logo />
       <Name />
       <RightSec />

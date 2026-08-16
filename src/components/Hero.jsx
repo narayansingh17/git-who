@@ -1,5 +1,7 @@
 import { Search } from "lucide-react";
-export default function Hero() {
+import { useState } from "react";
+
+export default function Hero({ query, onSetQuery, handleSubmit }) {
   return (
     <div className="hero-left">
       <h1 style={{ fontSize: "50px", textAlign: "center" }}>
@@ -8,7 +10,7 @@ export default function Hero() {
         </span>{" "}
         profile at a glance
       </h1>
-      <p>
+      <p style={{ display: "block", textAlign: "center" }}>
         Analyze repositories, coding activity, languages, and developer patterns
         from a single GitHub username.
       </p>
@@ -17,8 +19,15 @@ export default function Hero() {
         <input
           type="text"
           placeholder="Enter GitHub username"
-          className="search-bar "
+          className="search-bar"
+          value={query}
+          onChange={(e) => {
+            onSetQuery(e.target.value);
+          }}
         ></input>
+        <button className="search-button" onClick={() => handleSubmit(query)}>
+          <Search />
+        </button>
       </div>
     </div>
   );
