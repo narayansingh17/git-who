@@ -20,10 +20,7 @@ export default function Analysis({ user, query }) {
           <span>{user.bio} </span>
         </div>
       </div>
-      <div className="key-stats">
-        <span>Repositories: {user.public_repos}</span>
-        <span>Followers: {user.followers}</span>
-      </div>
+      <div className="key-stats"></div>
     </main>
   );
 }
