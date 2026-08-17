@@ -9,6 +9,7 @@ function App() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
 
+
   async function handleSubmit(query) {
     setLoading(true);
     const response = await fetch(`https://api.github.com/users/${query}`);

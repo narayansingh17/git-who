@@ -212,3 +212,10 @@
   height: 130px;
   border-radius: 65px;
 }
+.profile-details{
+  gap: 8px;
+}
+.key-stats{
+  border-top: 2px  solid #30363d;
+  border-bottom: 2px  solid #30363d;
+}

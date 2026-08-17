@@ -16,9 +16,13 @@ export default function Analysis({ user, query }) {
           <span style={{ fontSize: "27px", fontWeight: "600" }}>
             {user.name}
           </span>
-          <span style={{ color: "lightgrey" }}>@{query}</span>
+          <span style={{ color: "lightgrey" }}>@{user.login}</span>
           <span>{user.bio} </span>
         </div>
+      </div>
+      <div className="key-stats">
+        <span>Repositories: {user.public_repos}</span>
+        <span>Followers: {user.followers}</span>
       </div>
     </main>
   );

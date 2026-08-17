@@ -11,13 +11,13 @@ GitHub Username → GitHub API → Process Data → Visual Dashboard
 The goal is to practice React by building the project independently while working with a real-world API.
 
 2. V1 — Core Application
-   Landing Page
-   Navbar
-   Logo / project name
-   Hero section
-   Short project description
-   GitHub username input
-   Analyze button
+   ✅Landing Page
+   ✅Navbar
+   ✅Logo / project name
+   ✅Hero section
+   ✅Short project description
+   ✅GitHub username input
+   ✅Analyze button
    Feature cards
    Responsive design
    Design
@@ -44,10 +44,10 @@ Profile
 
 Fetch:
 
-Avatar
-Username
-Name
-Bio
+✅Avatar
+✅Username
+✅Name
+✅Bio
 Followers
 Following
 Public repositories
