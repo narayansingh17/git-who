@@ -48,10 +48,10 @@ Fetch:
 ✅Username
 ✅Name
 ✅Bio
-Followers
-Following
-Public repositories
-GitHub profile URL
+✅Followers
+✅Following
+✅Public repositories
+✅GitHub profile URL
 Repositories
 
 Fetch:
