@@ -4,16 +4,36 @@ import { FaGithub } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
 export default function Analysis({ user }) {
-  // const [activeTab, setActiveTab] = useState(false);
-  // const tabs = ["Profile", "Repositories", "Activity", "Summary"];
+  const [activeTab, setActiveTab] = useState(1);
+  const tabs = ["Profile", "Repositories", "Activity", "Summary"];
+
+  function handleActive(number) {
+    setActiveTab(number);
+  }
 
   return (
-    <main className="main-layout">
+    <main className="main-layout" style={{ backgroundColor: "#151d29" }}>
       <nav className="tabs">
-        <div style={{ backgroundColor: "grey" }}>Profile</div>
+        {/* <div style={{ backgroundColor: "grey" }} onClick={handleActive(1)}>Profile</div> */}
+        {/* <div
+          style={{ backgroundColor: "grey" }}
+          onClick={() => handleActive(1)}
+          className="profile-div"
+        >
+          Profile
+        </div>
         <div>Repsitories</div>
         <div>Activity</div>
-        <div>Summary</div>
+        <div>Summary</div> */}
+        {tabs.map((tab, i) => (
+          <div
+            style={activeTab === i + 1 ? { backgroundColor: "#2a3038" } : {}}
+            className={activeTab === 1 ? "profile-div" : ""}
+            onClick={() => handleActive(i + 1)}
+          >
+            {tab}
+          </div>
+        ))}
       </nav>
       <div className="profile">
         <img src={user.avatar_url} className="profile-picture"></img>
@@ -78,15 +98,17 @@ export default function Analysis({ user }) {
             GitHub
           </a>
         </div>
-        <div>
-          <FaXTwitter />{" "}
-          <a
-            href={`https://x.com/${user.twitter_username}`}
-            style={{ color: "white" }}
-          >
-            Twitter
-          </a>
-        </div>
+        {user.twitter_username && (
+          <div>
+            <FaXTwitter />{" "}
+            <a
+              href={`https://x.com/${user.twitter_username}`}
+              style={{ color: "white" }}
+            >
+              Twitter
+            </a>
+          </div>
+        )}
       </div>
     </main>
   );
