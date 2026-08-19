@@ -7,15 +7,21 @@ import { useState } from "react";
 function App() {
   const [query, setQuery] = useState("");
   const [user, setUser] = useState(null);
+  const [repos, setRepos] = useState(null);
   const [loading, setLoading] = useState(false);
-
 
   async function handleSubmit(query) {
     setLoading(true);
     const response = await fetch(`https://api.github.com/users/${query}`);
     const data = await response.json();
+    const response_r = await fetch(
+      `https://api.github.com/users/${query}/repos`,
+    );
+    const repoData = await response_r.json();
     console.log(data);
+    console.log(repoData);
     setUser(data);
+    setRepos(repoData);
     setLoading(false);
   }
   return (
@@ -26,7 +32,7 @@ function App() {
         onSetQuery={setQuery}
         handleSubmit={handleSubmit}
       />
-      {user && <Analysis user={user} query={query} />}
+      {user && <Analysis user={user} repos={repos} query={query} />}
     </div>
   );
 }
