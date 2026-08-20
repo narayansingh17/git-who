@@ -52,14 +52,14 @@ Fetch:
 ✅Following
 ✅Public repositories
 ✅GitHub profile URL
-Repositories
+✅Repositories
 
 Fetch:
 
-Repository name
+✅Repository name
 Description
-Stars
-Forks
+✅Stars
+✅Forks
 Primary language
 Last updated
 Repository URL

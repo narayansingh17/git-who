@@ -3,7 +3,7 @@ import Profile from "./Profile";
 import Repositories from "./Repositories";
 
 export default function Analysis({ user, repos }) {
-  const [activeTab, setActiveTab] = useState(1);
+  const [activeTab, setActiveTab] = useState(2);
   const tabs = ["Profile", "Repositories", "Activity", "Summary"];
 
   function handleActive(number) {
@@ -35,7 +35,7 @@ export default function Analysis({ user, repos }) {
         ))}
       </nav>
       {activeTab == 1 && <Profile user={user} />}
-      <Repositories repos={repos} />
+      {activeTab === 2 && <Repositories repos={repos} />}
     </main>
   );
 }
