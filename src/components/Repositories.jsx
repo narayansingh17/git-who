@@ -34,7 +34,62 @@ export default function Repositories({ repos }) {
         Top 5 repositories:
         <div className="top-five">
           {topFiveRepos.map((repo) => {
-            return repo.name;
+            return (
+              <div className="top-five-repo">
+                {repo.name}
+                <div style={{ fontWeight: "400", fontSize: "medium" }}>
+                  {repo.description}
+                </div>
+                <div
+                  style={{
+                    fontWeight: "400",
+                    fontSize: "15px",
+                    margin: "5px 0px",
+                    color: "lightgrey",
+                  }}
+                >
+                  Stars: {repo.stargazers_count} &middot; Forks:{" "}
+                  {repo.forks_count}
+                </div>
+                <div
+                  style={{
+                    fontWeight: "400",
+                    fontSize: "15px",
+                    margin: "5px 0px",
+                    color: "lightgrey",
+                  }}
+                >
+                  Primary Language: {repo.language}
+                </div>
+                <div
+                  style={{
+                    fontWeight: "400",
+                    fontSize: "15px",
+                    margin: "5px 0px",
+                    color: "lightgrey",
+                  }}
+                >
+                  Last updated:{" "}
+                  {new Date(repo.updated_at).toLocaleDateString("en-US", {
+                    day: "numeric",
+                    month: "short",
+                    year: "numeric",
+                  })}
+                </div>
+                <a
+                  href={repo.html_url}
+                  target="_blank"
+                  style={{
+                    fontWeight: "400",
+                    fontSize: "15px",
+                    margin: "5px 0px",
+                    color: "white",
+                  }}
+                >
+                  Link to repository↗
+                </a>
+              </div>
+            );
           })}
         </div>
       </span>

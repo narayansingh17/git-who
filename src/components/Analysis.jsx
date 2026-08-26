@@ -26,7 +26,11 @@ export default function Analysis({ user, repos }) {
         <div>Summary</div> */}
         {tabs.map((tab, i) => (
           <div
-            style={activeTab === i + 1 ? { backgroundColor: "#2a3038" } : {}}
+            style={
+              activeTab === i + 1
+                ? { backgroundColor: "#2a3038", cursor: "pointer" }
+                : { cursor: "pointer" }
+            }
             className={activeTab === 1 ? "profile-div" : ""}
             onClick={() => handleActive(i + 1)}
           >
