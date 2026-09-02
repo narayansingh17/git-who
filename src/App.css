@@ -303,3 +303,11 @@
   margin: 10px;
   padding: 10px;
 }
+.langs {
+  display: flex;
+  font-weight: 400;
+  font-size: medium;
+}
+.languages {
+  padding: 5px 15px;
+}

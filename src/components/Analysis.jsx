@@ -26,6 +26,7 @@ export default function Analysis({ user, repos }) {
         <div>Summary</div> */}
         {tabs.map((tab, i) => (
           <div
+            key={i}
             style={
               activeTab === i + 1
                 ? { backgroundColor: "#2a3038", cursor: "pointer" }

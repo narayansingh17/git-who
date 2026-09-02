@@ -1,5 +1,4 @@
 import { Search } from "lucide-react";
-import { useState } from "react";
 
 export default function Hero({ query, onSetQuery, handleSubmit }) {
   return (

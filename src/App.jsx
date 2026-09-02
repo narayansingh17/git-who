@@ -18,8 +18,7 @@ function App() {
       `https://api.github.com/users/${query}/repos`,
     );
     const repoData = await response_r.json();
-    console.log(data);
-    console.log(repoData);
+
     setUser(data);
     setRepos(repoData);
     setLoading(false);
