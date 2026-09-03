@@ -88,7 +88,7 @@ export default function Repositories({ repos = [] }) {
   return (
     <div className="repositories">
       <span style={{ fontWeight: "500", fontSize: "larger" }}>
-        Repository insights:
+        Repository overview:
       </span>
       <div className="repository-stats">
         <Stat>Repositories: {repos.length}</Stat>

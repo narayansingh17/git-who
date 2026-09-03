@@ -1,8 +1,9 @@
 import { useState } from "react";
 import Profile from "./Profile";
 import Repositories from "./Repositories";
+import Activity from "./Activity";
 
-export default function Analysis({ user, repos }) {
+export default function Analysis({ user, repos, events }) {
   const [activeTab, setActiveTab] = useState(2);
   const tabs = ["Profile", "Repositories", "Activity", "Summary"];
 
@@ -41,6 +42,7 @@ export default function Analysis({ user, repos }) {
       </nav>
       {activeTab == 1 && <Profile user={user} />}
       {activeTab === 2 && <Repositories repos={repos} />}
+      {activeTab === 3 && <Activity events={events} />}
     </main>
   );
 }

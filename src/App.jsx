@@ -8,6 +8,7 @@ function App() {
   const [query, setQuery] = useState("");
   const [user, setUser] = useState(null);
   const [repos, setRepos] = useState(null);
+  const [events, setEvents] = useState(null);
   const [loading, setLoading] = useState(false);
 
   async function handleSubmit(query) {
@@ -18,9 +19,14 @@ function App() {
       `https://api.github.com/users/${query}/repos`,
     );
     const repoData = await response_r.json();
+    const response_e = await fetch(
+      `https://api.github.com/users/${query}/events/public?per_page=100`,
+    );
+    const eventData = await response_e.json();
 
     setUser(data);
     setRepos(repoData);
+    setEvents(eventData);
     setLoading(false);
   }
   return (
@@ -31,7 +37,7 @@ function App() {
         onSetQuery={setQuery}
         handleSubmit={handleSubmit}
       />
-      {user && <Analysis user={user} repos={repos} query={query} />}
+      {user && <Analysis user={user} repos={repos} events={events} query={query} />}
     </div>
   );
 }

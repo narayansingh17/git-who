@@ -311,3 +311,78 @@
 .languages {
   padding: 5px 15px;
 }
+
+/* ── Activity Tab ─────────────────────────────────────────────────────────── */
+
+.activity-tab {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Heatmap grid override for the full 10-week view (70 cells, 10 columns) */
+.activity-grid--large {
+  grid-template-columns: repeat(10, 22.5px);
+}
+
+.activity-heatmap-wrapper {
+  overflow-x: auto;
+}
+
+/* Trend rows */
+.activity-trends {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.activity-trend-item {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  border-bottom: 1px solid #30363d;
+  padding: 6px 0;
+  font-size: 14px;
+}
+
+.trend-label {
+  width: 220px;
+  flex-shrink: 0;
+  color: lightgrey;
+  font-weight: 400;
+}
+
+.trend-value {
+  color: #f8fafc;
+}
+
+/* Timeline list */
+.activity-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.activity-timeline-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #30363d;
+  gap: 16px;
+  font-size: 14px;
+}
+
+.timeline-description {
+  flex: 1;
+}
+
+.timeline-date {
+  color: lightgrey;
+  font-size: 13px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
