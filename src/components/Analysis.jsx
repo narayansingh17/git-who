@@ -1,29 +1,51 @@
-export default function Analysis({ user, query }) {
+import { useState } from "react";
+import Profile from "./Profile";
+import Repositories from "./Repositories";
+import Activity from "./Activity";
+import ContributionHeatmap from "./ContributionHeatmap";
+import Summary from "./Summary";
+
+export default function Analysis({ user, repos, events, contributions }) {
+  const [activeTab, setActiveTab] = useState(1);
+  const tabs = ["Profile", "Repositories", "Activity", "Summary"];
+
+  function handleActive(number) {
+    setActiveTab(number);
+  }
+
   return (
-    <main className="main-layout">
+    <main className="main-layout" style={{ backgroundColor: "#151d29" }}>
       <nav className="tabs">
-        <div>Profile</div>
+        {/* <div style={{ backgroundColor: "grey" }} onClick={handleActive(1)}>Profile</div> */}
+        {/* <div
+          style={{ backgroundColor: "grey" }}
+          onClick={() => handleActive(1)}
+          className="profile-div"
+        >
+          Profile
+        </div>
         <div>Repsitories</div>
         <div>Activity</div>
-        <div>Summary</div>
+        <div>Summary</div> */}
+        {tabs.map((tab, i) => (
+          <div
+            key={i}
+            style={
+              activeTab === i + 1
+                ? { backgroundColor: "#2a3038", cursor: "pointer" }
+                : { cursor: "pointer" }
+            }
+            className={activeTab === 1 ? "profile-div" : ""}
+            onClick={() => handleActive(i + 1)}
+          >
+            {tab}
+          </div>
+        ))}
       </nav>
-      <div className="profile">
-        <img src={user.avatar_url} className="profile-picture"></img>
-        <div
-          className="profile-details"
-          style={{ display: "flex", flexDirection: "column", padding: "20px" }}
-        >
-          <span style={{ fontSize: "27px", fontWeight: "600" }}>
-            {user.name}
-          </span>
-          <span style={{ color: "lightgrey" }}>@{user.login}</span>
-          <span>{user.bio} </span>
-        </div>
-      </div>
-      <div className="key-stats">
-        <span>Repositories: {user.public_repos}</span>
-        <span>Followers: {user.followers}</span>
-      </div>
+      {activeTab == 1 && <Profile user={user} />}
+      {activeTab === 2 && <Repositories repos={repos} />}
+      {activeTab === 3 && <Activity events={events} contributions={contributions} />}
+      {activeTab === 4 && <Summary user={user} repos={repos} events={events} contributions={contributions} />}
     </main>
   );
 }

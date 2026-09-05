@@ -6,6 +6,7 @@
   justify-content: space-between;
   align-items: center;
 }
+
 .logo-area {
   width: 100px;
   height: inherit;
@@ -14,14 +15,17 @@
   margin: 15px 20px;
   padding: 2px;
 }
+
 .logo,
 .name {
   height: 62%;
   object-fit: contain;
 }
+
 .name {
   height: 45%;
 }
+
 .right-section {
   display: flex;
   flex-direction: row;
@@ -48,6 +52,7 @@
   gap: 20px;
   padding: 20px 0px;
 }
+
 .search-box {
   position: relative;
   width: 500px;
@@ -70,6 +75,7 @@
   border: 2px solid #30363d;
   box-shadow: 0 0 3px 2px rgba(74, 74, 74, 0.55);
 }
+
 .search-button {
   background-color: white;
   height: 50px;
@@ -93,6 +99,7 @@
 }
 
 @keyframes float {
+
   0%,
   100% {
     transform: translateY(0);
@@ -102,19 +109,23 @@
     transform: translateY(-8px);
   }
 }
+
 .mock-profile {
   display: flex;
   flex-direction: row;
 }
+
 .mock-pic {
   height: 75px;
   border-radius: 37.5px;
 }
+
 .username {
   display: flex;
   flex-direction: column;
   padding: 2px;
 }
+
 .prev-box {
   border: 2px solid #30363d;
   border-radius: 15px;
@@ -124,6 +135,7 @@
   text-align: center;
   padding: 5px;
 }
+
 .language {
   margin: 12px 0px;
 }
@@ -152,6 +164,7 @@
   background: #3fb950;
   border-radius: inherit;
 }
+
 .activity-grid {
   display: grid;
   grid-template-columns: repeat(10, 22.5px);
@@ -164,6 +177,10 @@
   height: 22.5px;
   aspect-ratio: 1;
   border-radius: 2px;
+  background: #161b22;
+}
+
+.level-0 {
   background: #161b22;
 }
 
@@ -188,12 +205,15 @@
   border-radius: 15px;
   width: 90%;
   margin: 0 auto;
+  padding-bottom: 10px;
 }
+
 .tabs {
   height: 50px;
   border-bottom: 2px solid #30363d;
   display: flex;
 }
+
 .tabs div {
   width: 200px;
   display: flex;
@@ -201,6 +221,11 @@
   align-items: center;
   border-right: 2px solid #30363d;
 }
+
+.profile-div {
+  border-top-left-radius: 15px;
+}
+
 .profile {
   display: flex;
   flex-direction: row;
@@ -212,10 +237,325 @@
   height: 130px;
   border-radius: 65px;
 }
-.profile-details{
+
+.profile-details {
   gap: 8px;
 }
-.key-stats{
-  border-top: 2px  solid #30363d;
-  border-bottom: 2px  solid #30363d;
+
+.key-stats {
+  margin-left: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-top: 2px solid #30363d;
+  border-bottom: 2px solid #30363d;
+  height: 50px;
+  margin-bottom: 5px;
+}
+
+.key-stats div {
+  border-right: 2px solid #30363d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0px 5px;
+}
+
+.extra-info {
+  width: 450px;
+  margin: 0px 15px;
+  padding: 5px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+  gap: 10px;
+}
+
+.links {
+  margin: 5px 0px 0px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.repositories {
+  padding: 15px;
+}
+
+.repository-stats {
+  display: flex;
+}
+
+.repository-stat {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 125px;
+  height: 50px;
+  margin: 15px;
+  flex-direction: row;
+  border: 2px solid #30363d;
+}
+
+.repository-stat svg {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+  transform: translateY(1px);
+}
+
+.top-five {
+  display: grid;
+}
+
+@media (max-width: 750px) {
+  .top-five {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 751px) and (max-width: 999px) {
+  .top-five {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (min-width: 1000px) and (max-width: 1299px) {
+  .top-five {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+@media (min-width: 1300px) {
+  .top-five {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.top-five-repo {
+  border: 2px solid #30363d;
+  margin: 10px;
+  padding: 10px;
+}
+
+.langs {
+  display: flex;
+  font-weight: 400;
+  font-size: medium;
+}
+
+.languages {
+  padding: 5px 15px;
+}
+
+/* ── Activity Tab ─────────────────────────────────────────────────────────── */
+
+.activity-tab {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Heatmap grid override for the full 10-week view (70 cells, 10 columns) */
+.activity-grid--large {
+  grid-template-columns: repeat(10, 22.5px);
+}
+
+.activity-heatmap-wrapper {
+  overflow-x: auto;
+}
+
+/* Trend rows */
+.activity-trends {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.activity-trend-item {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  border-bottom: 1px solid #30363d;
+  padding: 6px 0;
+  font-size: 14px;
+}
+
+.trend-label {
+  width: 220px;
+  flex-shrink: 0;
+  color: lightgrey;
+  font-weight: 400;
+}
+
+.trend-value {
+  color: #f8fafc;
+}
+
+/* Timeline list */
+.activity-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.activity-timeline-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #30363d;
+  gap: 16px;
+  font-size: 14px;
+}
+
+.timeline-description {
+  flex: 1;
+}
+
+.timeline-date {
+  color: lightgrey;
+  font-size: 13px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.heatmap-card {
+  border: 2px solid #30363d;
+  border-radius: 15px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.heatmap-card-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.heatmap-total {
+  color: lightgrey;
+  font-size: 13px;
+}
+
+.heatmap-scroll {
+  overflow-x: auto;
+}
+
+.heatmap-inner {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: min-content;
+}
+
+.heatmap-months {
+  /* kept for backwards compat — no longer rendered */
+  display: none;
+}
+
+/* Container that holds one group per month, with a gap between them */
+.heatmap-months-container {
+  display: flex;
+  gap: 6px;
+}
+
+/* One month: label on top, then that month's week columns below */
+.heatmap-month-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.heatmap-month-label {
+  font-size: 11px;
+  color: lightgrey;
+  white-space: nowrap;
+}
+
+.heatmap-body {
+  display: flex;
+  gap: 4px;
+}
+
+.heatmap-day-labels {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 28px;
+  flex-shrink: 0;
+  font-size: 11px;
+  color: lightgrey;
+  /* Push Mon/Wed/Fri down past the month label (≈11px text + 4px gap = 15px) */
+  padding-top: 18px;
+  box-sizing: border-box;
+}
+
+.heatmap {
+  display: flex;
+  gap: 4px;
+}
+
+.heatmap-week {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.heatmap-day {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.heatmap-legend {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  align-self: flex-end;
+  font-size: 11px;
+  color: lightgrey;
+}
+
+/* ── Summary Tab ──────────────────────────────────────────────────────────── */
+
+.summary {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Factual paragraph at the top of the Summary tab */
+.summary-paragraph {
+  /* border: 2px solid #30363d; */
+  /* border-radius: 8px; */
+  padding: 8px 0px;
+  font-size: 17px;
+  line-height: 1;
+  color: #f8fafc;
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: italic;
+  line-height: 1.55;
+}
+
+.summary-paragraph strong {
+  font-style: normal;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+/* Wrapper for language bars and similar block sections */
+.summary-section {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 4px 0;
 }

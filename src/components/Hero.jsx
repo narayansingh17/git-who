@@ -1,7 +1,12 @@
 import { Search } from "lucide-react";
-import { useState } from "react";
 
 export default function Hero({ query, onSetQuery, handleSubmit }) {
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      console.log(event.key);
+      handleSubmit(query);
+    }
+  };
   return (
     <div className="hero-left">
       <h1 style={{ fontSize: "50px", textAlign: "center" }}>
@@ -24,8 +29,12 @@ export default function Hero({ query, onSetQuery, handleSubmit }) {
           onChange={(e) => {
             onSetQuery(e.target.value);
           }}
+          onKeyDown={handleKeyDown}
         ></input>
-        <button className="search-button" onClick={() => handleSubmit(query)}>
+        <button
+          className="search-button"
+          onClick={() => handleSubmit(query)}
+        >
           <Search />
         </button>
       </div>

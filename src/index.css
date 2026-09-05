@@ -9,7 +9,9 @@ body {
   font-family:
     -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
     Cantarell, sans-serif;
-  background-color: #0d1117; /* Slate dark background */
+  background-color: #0d1117;
+  /* Slate dark background */
   color: #f8fafc;
   min-height: 100vh;
+  margin-bottom: 100px;
 }
