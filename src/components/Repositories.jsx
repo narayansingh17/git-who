@@ -2,6 +2,7 @@ import { Star, GitFork } from "lucide-react";
 import { useMemo } from "react";
 
 export default function Repositories({ repos = [] }) {
+<<<<<<< HEAD
   if (repos === null) {
     return <div className="activity-tab">Loading repositories…</div>;
   }
@@ -17,6 +18,8 @@ export default function Repositories({ repos = [] }) {
       </div>
     );
   }
+=======
+>>>>>>> b57bdb31de2e427d6795fd24894189c43c1723cc
   const topFiveRepos = useMemo(() => {
     if (!Array.isArray(repos)) return [];
     return repos
