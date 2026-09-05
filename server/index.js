@@ -46,28 +46,49 @@ app.get("/api/github/user/:username", async (req, res) => {
 
 app.get("/api/github/user/:username/repos", async (req, res) => {
     const { username } = req.params;
-    const { per_page } = req.query;
+
+    // GitHub's maximum is 100 per page.
+    // We loop through pages until the response has fewer than PER_PAGE items,
+    // which means we've reached the last page.
+    // MAX_PAGES is a safety cap so we never make more than 10 GitHub requests
+    // for one user (covers up to 1,000 repos).
+    const PER_PAGE = 100;
+    const MAX_PAGES = 10;
 
     try {
-        const response = await fetch(
-            `https://api.github.com/users/${username}/repos?per_page=${per_page || 30}`,
-            {
-                headers: {
-                    Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
-                    Accept: "application/vnd.github+json",
-                },
+        const allRepos = [];
+        let page = 1;
+
+        while (page <= MAX_PAGES) {
+            const response = await fetch(
+                `https://api.github.com/users/${username}/repos?per_page=${PER_PAGE}&page=${page}`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+                        Accept: "application/vnd.github+json",
+                    },
+                }
+            );
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                return res.status(response.status).json({
+                    error: data.message || "GitHub API request failed",
+                });
             }
-        );
 
-        const data = await response.json();
+            allRepos.push(...data);
 
-        if (!response.ok) {
-            return res.status(response.status).json({
-                error: data.message || "GitHub API request failed",
-            });
+            // Fewer than PER_PAGE results means this was the last page.
+            if (data.length < PER_PAGE) {
+                break;
+            }
+
+            page++;
         }
 
-        res.json(data);
+        res.json(allRepos);
     } catch (error) {
         console.error(error);
 
@@ -153,6 +174,14 @@ app.get("/api/github/user/:username/contributions", async (req, res) => {
         if (data.errors) {
             return res.status(400).json({
                 error: data.errors[0].message,
+            });
+        }
+
+        // GitHub returns data.user as null when the user exists but
+        // their contributions are not accessible (e.g. suspended account).
+        if (!data.data?.user) {
+            return res.status(404).json({
+                error: "Contribution data not available for this user.",
             });
         }
 

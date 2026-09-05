@@ -1,15 +1,8 @@
-// Summary.jsx
 // The analytical tab of GitWho.
-//
-// Props (all already fetched in App.jsx — no new API calls):
-//   user          — GitHub REST user object
-//   repos         — array of repo objects (up to 100)
-//   events        — array of public event objects (up to 100)
-//   contributions — { contributionCalendar: { totalContributions, weeks[] } }
 
 import { useMemo } from "react";
 
-// ─── Helper functions ────────────────────────────────────────────────────────
+
 
 // Return the key whose value is highest in a Map.
 function maxKey(map) {
@@ -24,7 +17,7 @@ function maxKey(map) {
   return bestKey;
 }
 
-// Format a date string like "Sep 2024".
+
 function formatMonthYear(dateStr) {
   return new Date(dateStr).toLocaleDateString("en-US", {
     month: "short",
@@ -42,11 +35,9 @@ function monthsAgo(dateStr) {
   );
 }
 
-// ─── Derived data hook ───────────────────────────────────────────────────────
 
 function useSummaryData(user, repos, events, contributions) {
   return useMemo(() => {
-    // ── Repos ────────────────────────────────────────────────────────────────
     const safeRepos = Array.isArray(repos) ? repos : [];
 
     let totalStars = 0;
@@ -110,7 +101,6 @@ function useSummaryData(user, repos, events, contributions) {
     const reposWithLanguage = safeRepos.filter((r) => r.language).length;
     const primaryLanguage = sortedLanguages.length > 0 ? sortedLanguages[0][0] : null;
 
-    // ── Events ───────────────────────────────────────────────────────────────
     const safeEvents = Array.isArray(events) ? events : [];
 
     const eventTypeMap = new Map();

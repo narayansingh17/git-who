@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Profile from "./Profile";
 import Repositories from "./Repositories";
 import Activity from "./Activity";
@@ -8,13 +8,24 @@ import Summary from "./Summary";
 export default function Analysis({ user, repos, events, contributions }) {
   const [activeTab, setActiveTab] = useState(1);
   const tabs = ["Profile", "Repositories", "Activity", "Summary"];
+  const analysisRef = useRef(null);
 
   function handleActive(number) {
     setActiveTab(number);
   }
 
+
+  useEffect(() => {
+    if (user) {
+      analysisRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }
+  }, [user])
+
   return (
-    <main className="main-layout" style={{ backgroundColor: "#151d29" }}>
+    <main className="main-layout" style={{ backgroundColor: "#151d29" }} ref={analysisRef}>
       <nav className="tabs">
         {/* <div style={{ backgroundColor: "grey" }} onClick={handleActive(1)}>Profile</div> */}
         {/* <div

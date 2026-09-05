@@ -2,7 +2,6 @@ import { Star, GitFork } from "lucide-react";
 import { useMemo } from "react";
 
 export default function Repositories({ repos = [] }) {
-<<<<<<< HEAD
   if (repos === null) {
     return <div className="activity-tab">Loading repositories…</div>;
   }
@@ -18,8 +17,6 @@ export default function Repositories({ repos = [] }) {
       </div>
     );
   }
-=======
->>>>>>> b57bdb31de2e427d6795fd24894189c43c1723cc
   const topFiveRepos = useMemo(() => {
     if (!Array.isArray(repos)) return [];
     return repos
@@ -126,14 +123,14 @@ export default function Repositories({ repos = [] }) {
               <div className="top-five-repo" key={repo.name}>
                 {repo.name}{" "}
                 {i == 0 && repo.stargazers_count != 0 ? <Star size={16} /> : ""}
-                <div style={{ fontWeight: "400", fontSize: "medium" }}>
+                {repo.description && <div style={{ fontWeight: "400", fontSize: "medium" }}>
                   {repo.description}
-                </div>
+                </div>}
                 <div style={boxStyle}>
                   Stars: {repo.stargazers_count} &middot; Forks:{" "}
                   {repo.forks_count}
                 </div>
-                <div style={boxStyle}>Primary Language: {repo.language}</div>
+                <div style={boxStyle}>Primary Language: {repo.language ? repo.language : "Not specified"}</div>
                 <div style={boxStyle}>
                   Last updated:{" "}
                   {new Date(repo.updated_at).toLocaleDateString("en-US", {
@@ -163,7 +160,7 @@ export default function Repositories({ repos = [] }) {
         Language breakdown (top languages):
         <div className="languages">
           {sortedLanguagesArray.map((lang) => {
-            return <span className="langs">{lang[0]}</span>;
+            return <span className="langs" key={lang[0]}>{lang[0]}</span>;
           })}
         </div>
       </span>

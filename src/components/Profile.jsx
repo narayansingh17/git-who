@@ -12,10 +12,10 @@ export default function Profile({ user }) {
           style={{ display: "flex", flexDirection: "column", padding: "20px" }}
         >
           <span style={{ fontSize: "27px", fontWeight: "600" }}>
-            {user.name}
+            {user.name || user.login}
           </span>
           <span style={{ color: "lightgrey" }}>@{user.login}</span>
-          <span>{user.bio} </span>
+          {user.bio && <span>{user.bio} </span>}
         </div>
       </div>
       <div className="key-stats">
@@ -49,7 +49,7 @@ export default function Profile({ user }) {
         )}
         {user.blog && (
           <a
-            href={user.blog}
+            href={user.blog.startsWith("http") ? user.blog : `https://${user.blog}`}
             target="_blank"
             style={{ display: "flex", color: "white" }}
           >
