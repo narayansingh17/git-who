@@ -1,3 +1,5 @@
+import logo from "../assets/logo.png";
+import title from "../assets/title.png";
 export default function Navbar() {
   return (
     <nav className="main-nav">
@@ -11,9 +13,9 @@ export default function Navbar() {
 function Logo() {
   return (
     <div className="logo-area">
-      <img src="src\assets\GitWho-logo.png" className="logo"></img>
+      <img src={logo} className="logo"></img>
       <img
-        src="src\assets\Gemini_Generated_Image_ldyne7ldyne7ldyn-removebg-preview.png"
+        src={title}
         className="name"
       ></img>
     </div>
@@ -22,8 +24,8 @@ function Logo() {
 function RightSec() {
   return (
     <div className="right-section">
-      <p>How it works?</p>
-      <p>GitHub↗</p>
+      <a href="https://github.com/narayansingh17/git-who/blob/main/how-it-works.md" target="_blank" style={{ color: "white" }}>How it works?</a>
+      <a href="https://github.com/narayansingh17/git-who" target="_blank" style={{ color: "white" }}>GitHub↗</a>
     </div>
   );
 }

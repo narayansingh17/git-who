@@ -1,3 +1,5 @@
+import octocat from "../assets/Octocat.jpg";
+
 const languages = [
   { name: "JavaScript", percentage: 48 },
   { name: "CSS", percentage: 31 },
@@ -12,7 +14,7 @@ export default function DashboardPrev() {
   return (
     <div className="dashboard-preview">
       <div className="mock-profile">
-        <img src="src\assets\Octocat.jpg" className="mock-pic"></img>
+        <img src={octocat} className="mock-pic"></img>
         <div className="username">
           <span style={{ fontSize: "20px" }}>OctoCat</span>
           <span style={{ color: "lightgrey", fontSize: "14px" }}>@octo67</span>
