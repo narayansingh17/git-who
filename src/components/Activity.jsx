@@ -4,7 +4,6 @@
 // (up to 100 most-recent public events, last ~90 days)
 import ContributionHeatmap from "./ContributionHeatmap";
 export default function Activity({ events, contributions }) {
-  // --- Loading state ---
   if (events === null) {
     return <div className="activity-tab">Loading activity…</div>;
   }

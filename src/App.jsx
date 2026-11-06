@@ -66,7 +66,7 @@ function App() {
       setContributions(contributionsData);
       setLoading(false);
     }
-    catch (error) {
+    catch {
       setError("An error occurred while fetching user data.");
       setLoading(false);
     }
@@ -82,11 +82,11 @@ function App() {
       />
       {/* Show error message if a search failed */}
       {error && (
-        <p style={{ textAlign: "center", color: "#f87171", marginTop: "16px" }}>
+        <p className="search-message search-message--error" role="alert">
           {error}
         </p>
       )}
-      {loading && <p style={{ textAlign: "center", color: "#ffffffff", marginTop: "16px" }}>Loading...</p>}
+      {loading && <p className="search-message" role="status">Loading profile data…</p>}
       {user && <Analysis user={user} repos={repos} events={events} query={query} contributions={contributions} />}
     </div>
   );

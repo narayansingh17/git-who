@@ -8,19 +8,15 @@ export default function Hero({ query, onSetQuery, handleSubmit }) {
     }
   };
   return (
-    <div className="hero-left">
-      <h1 style={{ fontSize: "50px", textAlign: "center" }}>
-        <span style={{ display: "block", textAlign: "center" }}>
-          Understand any GitHub
-        </span>{" "}
-        profile at a glance
-      </h1>
-      <p style={{ display: "block", textAlign: "center" }}>
+    <section className="hero-left" aria-labelledby="landing-title">
+      <p className="hero-eyebrow">GitHub profile analytics</p>
+      <h1 id="landing-title" className="landing-title">GitHub profiles, clearly analyzed</h1>
+      <p className="landing-description">
         Analyze repositories, coding activity, languages, and developer patterns
         from a single GitHub username.
       </p>
       <div className="search-box">
-        <Search className="search-icon" size={20} color="#000000" />
+        <Search className="search-icon" size={20} aria-hidden="true" />
         <input
           type="text"
           placeholder="Enter GitHub username"
@@ -30,14 +26,19 @@ export default function Hero({ query, onSetQuery, handleSubmit }) {
             onSetQuery(e.target.value);
           }}
           onKeyDown={handleKeyDown}
-        ></input>
+          aria-label="GitHub username"
+          autoComplete="off"
+        />
         <button
           className="search-button"
+          type="button"
           onClick={() => handleSubmit(query)}
+          aria-label="Analyze GitHub profile"
         >
-          <Search />
+          <Search aria-hidden="true" />
         </button>
       </div>
-    </div>
+      <p className="search-hint">Enter a public GitHub username to begin.</p>
+    </section>
   );
 }

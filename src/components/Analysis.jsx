@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from "react";
 import Profile from "./Profile";
 import Repositories from "./Repositories";
 import Activity from "./Activity";
-import ContributionHeatmap from "./ContributionHeatmap";
 import Summary from "./Summary";
 
 export default function Analysis({ user, repos, events, contributions }) {
@@ -25,8 +24,8 @@ export default function Analysis({ user, repos, events, contributions }) {
   }, [user])
 
   return (
-    <main className="main-layout" style={{ backgroundColor: "#151d29" }} ref={analysisRef}>
-      <nav className="tabs">
+    <main className="main-layout" ref={analysisRef}>
+      <nav className="tabs" aria-label="Profile analysis sections" role="tablist">
         {/* <div style={{ backgroundColor: "grey" }} onClick={handleActive(1)}>Profile</div> */}
         {/* <div
           style={{ backgroundColor: "grey" }}
@@ -39,24 +38,26 @@ export default function Analysis({ user, repos, events, contributions }) {
         <div>Activity</div>
         <div>Summary</div> */}
         {tabs.map((tab, i) => (
-          <div
+          <button
             key={i}
-            style={
-              activeTab === i + 1
-                ? { backgroundColor: "#2a3038", cursor: "pointer" }
-                : { cursor: "pointer" }
-            }
-            className={activeTab === 1 ? "profile-div" : ""}
+            type="button"
+            role="tab"
+            aria-selected={activeTab === i + 1}
+            aria-controls="analysis-panel"
+            id={`analysis-tab-${i + 1}`}
+            className={`analysis-tab${activeTab === i + 1 ? " is-active" : ""}`}
             onClick={() => handleActive(i + 1)}
           >
             {tab}
-          </div>
+          </button>
         ))}
       </nav>
-      {activeTab == 1 && <Profile user={user} />}
-      {activeTab === 2 && <Repositories repos={repos} />}
-      {activeTab === 3 && <Activity events={events} contributions={contributions} />}
-      {activeTab === 4 && <Summary user={user} repos={repos} events={events} contributions={contributions} />}
+      <div className="analysis-panel" role="tabpanel" tabIndex={0} id="analysis-panel" aria-labelledby={`analysis-tab-${activeTab}`} key={activeTab}>
+        {activeTab === 1 && <Profile user={user} />}
+        {activeTab === 2 && <Repositories repos={repos} />}
+        {activeTab === 3 && <Activity events={events} contributions={contributions} />}
+        {activeTab === 4 && <Summary user={user} repos={repos} events={events} contributions={contributions} />}
+      </div>
     </main>
   );
 }
